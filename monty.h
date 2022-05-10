@@ -55,7 +55,7 @@ typedef struct instruction_s
 
 #define USAGE "USAGE: monty file\n"
 #define OPEN_ERR "Error: Can't open file %s\n"
-#define UNKNOWN "L%u: unknown instruction <opcode>\n"
+#define UNKNOWN "L%u: unknown instruction %s\n"
 #define MALLOC_FAIL "Error: malloc failed\n"
 #define PUSH_FAIL "L%u: usage: push integer\n"
 #define PINT_FAIL "L%u: can't pint, stack empty\n"
