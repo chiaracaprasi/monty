@@ -1,7 +1,6 @@
 #ifndef _MONTY_H_
 #define _MONTY_H_
 
-#define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -16,7 +15,6 @@
 typedef struct global_s
 {
 	struct stack_s **head;
-	int pushArg;
 	unsigned int lineNum;
 	int mode;
 } global_t;
@@ -54,8 +52,12 @@ typedef struct instruction_s
 extern global_t access;
 
 
-int process(char *bufferLine);
-void push_op(stack_t **stack, unsigned int line_number);
+int tokenise(char *bufferLine);
+int stack_builder(int n);
+int get_func(char *opCode);
+stack_t *push_node();
+stack_t *enqueue_node();
+void free_stack();
 void pall_op(stack_t **stack, unsigned int line_number);
 void pint_op(stack_t **stack, unsigned int line_number);
 void pop_op(stack_t **stack, unsigned int line_number);
