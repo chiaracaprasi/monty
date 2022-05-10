@@ -1,18 +1,26 @@
 #include "monty.h"
 
 global_t access = {NULL, 0, 0, 0};
+extern global_t access;
 
+/**
+ * main - a simple bytecode intepreter
+ * @argc: the number of arguments passed in at command line
+ * @argv: an array of arguments passed in
+ * Return: always 0
+ */
 int main(int argc, char *argv[])
 {
 	FILE *montyFile;
 	char *montyLine = NULL;
 	size_t len = 0;
-        int read;
+	int read, retval;
+	stack_t *head = NULL;
 
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file");
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 
 	montyFile = fopen(argv[1], "r");
@@ -20,9 +28,10 @@ int main(int argc, char *argv[])
 	if (montyFile == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 
+	access.head = &head;
 	read = getline(&montyLine, &len, montyFile);
 
 	if (read == -1)
@@ -30,15 +39,15 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Error: Can't open file <file>\n");
 		free(montyLine);
 		fclose(montyFile);
-		exit (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 
 	while (read != -1)
 	{
 		access.lineNum++;
-		printf("%s", montyLine);
-		printf("line number is %d\n", access.lineNum);
-		/* call function to tokenise and the perform */
+		retval = process(montyLine);
+		if (retval == -1)
+			break;
 		read = getline(&montyLine, &len, montyFile);
 	}
 

@@ -18,7 +18,7 @@ typedef struct global_s
 	struct stack_s **head;
 	int pushArg;
 	unsigned int lineNum;
-	int fifo;
+	int mode;
 } global_t;
 
 /**
@@ -51,6 +51,10 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+extern global_t access;
+
+
+int process(char *bufferLine);
 void push_op(stack_t **stack, unsigned int line_number);
 void pall_op(stack_t **stack, unsigned int line_number);
 void pint_op(stack_t **stack, unsigned int line_number);
