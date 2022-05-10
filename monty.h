@@ -1,9 +1,10 @@
 #ifndef _MONTY_H_
 #define _MONTY_H_
 
-#include <stldib.h>
-#include <string.h>
+#define _GNU_SOURCE
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 /**
  * global_s - collection of globally needed variables
@@ -64,3 +65,5 @@ void pchar_op(stack_t **stack, unsigned int line_number);
 void pstr_op(stack_t **stack, unsigned int line_number);
 void rotl_op(stack_t **stack, unsigned int line_number);
 void rotr_op(stack_t **stack, unsigned int line_number);
+
+#endif /* _MONTY_H_ */
