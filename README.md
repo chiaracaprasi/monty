@@ -2,6 +2,8 @@
 
 The goal of this project, part of Holberton School curriculum, is to create an interpreter for Monty ByteCodes files.
 
+![monty_python-crew](https://user-images.githubusercontent.com/91517809/167522780-6fb6cbf8-a8e1-4051-9a4c-5af5dd427718.jpeg)
+
 Monty 0.98 is a scripting language that is first compiled into Monty byte codes, just like Python. It relies on a unique stack, with specific instructions to manipulate it. 
 
 #### 🔍 Monty byte code files
