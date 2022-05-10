@@ -45,6 +45,44 @@ pall This is the end of our program. Monty is awesome!$
 julien@ubuntu:~/monty$
 ```
 
+## Monty Opcodes
+
+* **push** 
+  * Usage: ``push <int> ``
+  * Pushe pushes an element to the stack
+
+
+* **pall** 
+  * Prints all the values on the stack, starting from the top of the stack
+  * Usage: ``pall``
+  * If the stack is empty, don’t print anything
+
+
+* **pint** 
+  * Prints the value at the top of the stack, followed by a new line
+  * Usage: ``pint``
+
+
+* **pop** 
+  * Removes the top element of the stack
+  * Usage: ``pop``
+
+
+* **swap** 
+  * Swaps the top two elements of the stack
+  * Usage: ``swap``
+ 
+
+* **add** 
+   * Adds the top two elements of the stack
+   * Usage: ``add``
+
+
+* **nop** 
+   * Doesn’t do anything
+   * Usage: ``nop``
+
+
 ## 📋 Project Requirements 
 
 ### General
@@ -53,7 +91,7 @@ julien@ubuntu:~/monty$
 - Maximum of one global variable
 - No more than 5 functions per file
 - Use the C standard library is allowed
-- The prototypes of all your functions should be included in your header file called monty.h
+- The prototypes of all your functions should be included in the header file called monty.h
 
 ### Coding Style
 
