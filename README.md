@@ -52,7 +52,7 @@ julien@ubuntu:~/monty$
 - All files should end with a new line
 - Maximum of one global variable
 - No more than 5 functions per file
-- You are allowed to use the C standard library
+- Use the C standard library is allowed
 - The prototypes of all your functions should be included in your header file called monty.h
 
 ### Coding Style
