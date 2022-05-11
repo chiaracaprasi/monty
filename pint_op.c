@@ -7,7 +7,7 @@
  * Return: void
  */
 
-void pint_op(stack_t **stack, unsigned int line_number)
+void pint_op(stack_t **stack, __attribute__ ((unused)) unsigned int line_number)
 {
 	if (*stack == NULL || stack == NULL)
 		error_handler(5, NULL);

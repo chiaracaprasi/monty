@@ -6,7 +6,7 @@
  * @line_number: file line number opcode received from
  * Return: Nothing
  */
-void pop_op(stack_t **stack, unsigned int line_number)
+void pop_op(stack_t **stack, __attribute__ ((unused)) unsigned int line_number)
 {
 	stack_t *hold;
 

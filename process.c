@@ -40,18 +40,18 @@ void tokenise(char *lineBuffer)
 	token = strtok(lineBuffer, " ");
 
 	if (*token == '#' || token == NULL)
-		return (0);
+		return;
 
 	if (strcmp(token, "stack") == 0)
 	{
 		g_data.mode = 0;
-		return (0);
+		return;
 	}
 
 	if (strcmp(token, "queue") == 0)
 	{
 		g_data.mode = 1;
-		return (0);
+		return;
 	}
 
 	if (strcmp(token, "push") == 0)

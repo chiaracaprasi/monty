@@ -109,11 +109,11 @@ void rotr_op(stack_t **stack, unsigned int line_number);
 void error_handler(int error_code, char *opcode);
 void usage_error(char *opcode);
 void malloc_error(char *opcode);
-void unknown_op(char *opcode);
-void push_op(char *opcode);
-void pint_op(char *opcode);
-void pop_op(char *opcode);
+void unknown_op_error(char *opcode);
+void push_error(char *opcode);
+void pint_error(char *opcode);
+void pop_error(char *opcode);
 void short_error(char *opcode);
-void mod_op(char *opcode);
+void mod_error(char *opcode);
 
 #endif /* _MONTY_H_ */

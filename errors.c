@@ -12,16 +12,16 @@ void error_handler(int error_code, char *opcode)
 	error_selector error_selector[] = {
 		{1, usage_error},
 		{2, malloc_error},
-		{3, unknown_op},
-		{4, push_op},
-		{5, pint_op},
-		{6, pop_op},
+		{3, unknown_op_error},
+		{4, push_error},
+		{5, pint_error},
+		{6, pop_error},
 		{7, short_error},
-		{8, mod_op},
-		{NULL, NULL}
+		{8, mod_error},
+		{0, NULL}
 	};
 
-	while (error_selector[idx].err_num != NULL)
+	while (error_selector[idx].err_num != 0)
 	{
 		if (error_selector[idx].err_num == error_code)
 		{
@@ -59,14 +59,14 @@ void malloc_error(__attribute__ ((unused)) char *opcode)
 }
 
 /**
- * unknown_op - handles error for uknown opcode
+ * unknown_op_error - handles error for uknown opcode
  * @opcode: opcode passed as argument
  *
  * Return: Nothing
  */
-void unknown_op(char *opcode)
+void unknown_op_error(char *opcode)
 {
-	dprintf(STDERR_FILENO, UNKNOWN, g_data.lineNum);
+	dprintf(STDERR_FILENO, UNKNOWN, g_data.lineNum, opcode);
 	free_stack();
 	free(*(g_data.buffer));
 	fclose(g_data.montyFile);
@@ -107,9 +107,9 @@ void pint_error(__attribute__ ((unused)) char *opcode)
  * pop_error - prints pop error error message
  * @opcode: opcode passed as argument
  *
- * Return: EXIT_FAILURE
+ * Return: Nothing
  */
-int pop_error(__attribute__ ((unused)) char *opcode)
+void pop_error(__attribute__ ((unused)) char *opcode)
 {
 	dprintf(STDERR_FILENO, POP_FAIL, g_data.lineNum);
 	free(*(g_data.buffer));
@@ -118,12 +118,12 @@ int pop_error(__attribute__ ((unused)) char *opcode)
 }
 
 /**
- * mod_op - prints error message
+ * mod_error - prints error message
  * @opcode: opcode passed as argument
  *
  * Return: Nothing
  */
-void mod_op(__attribute__ ((unused)) char *opcode)
+void mod_error(__attribute__ ((unused)) char *opcode)
 {
 	dprintf(STDERR_FILENO, MOD_0, g_data.lineNum);
 	free_stack();
