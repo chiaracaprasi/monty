@@ -85,6 +85,9 @@ void get_func(char *opCode)
 		{NULL, NULL}
 	};
 
+	if (strcmp(opCode, "nop") == 0)
+		return;
+
 	while (selector[idx].opcode != NULL)
 	{
 		if (strcmp(opCode, selector[idx].opcode) == 0)
