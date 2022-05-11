@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
 /**
  * global_s - collection of globally needed variables
@@ -35,6 +36,8 @@ typedef struct stack_s
         struct stack_s *next;
 } stack_t;
 
+typedef stack_t dlistint_t;
+
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
@@ -51,6 +54,21 @@ typedef struct instruction_s
 
 extern global_t access;
 
+/* macros used for error messages */
+#define USAGE "USAGE: monty file\n"
+#define OPEN_ERR "Error: Can't open file %s\n"
+#define UNKNOWN "L%u: unknown instruction %s\n"
+#define MALLOC_FAIL "Error: malloc failed\n"
+#define PUSH_FAIL "L%u: usage: push integer\n"
+#define PINT_FAIL "L%u: can't pint, stack empty\n"
+#define POP_FAIL "L%u: can't pop an empty stack\n"
+#define SWAP_FAIL "L%u: can't swap, stack too short\n"
+#define ADD_FAIL "L%u: can't add, stack too short\n"
+#define SUB_FAIL "L%u: can't sub, stack too short\n"
+#define DIV_FAIL "L%u: can't div, stack too short\n"
+#define MUL_FAIL "L%u: can't mul, stack too short\n"
+#define MOD_FAIL "L%u: can't mod, stack too short\n"
+#define MOD_0 "L%u: division by zero\n"
 
 int get_monty(char **buffer, size_t *read, FILE *file);
 int tokenise(char *bufferLine);

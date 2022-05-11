@@ -31,10 +31,8 @@ size_t print_dlistint(const dlistint_t *h)
  * Return: void
  */
 
-void pall_op(stack_t **stack, unsigned int line_number)
+void pall_op(stack_t **stack, __attribute__ ((unused)) unsigned int line_number)
 {
-	void(line_number);
-
 	if (*stack != NULL)
 		print_dlistint(*stack);
 }
