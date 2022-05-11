@@ -58,6 +58,20 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ * struct error_selector - error code and its function
+ * @err_num: the error number
+ * @f: function to handle the error message
+ *
+ * Description: opcode and its function
+ * for stack, queues, LIFO, FIFO
+ */
+typedef struct error_selector
+{
+	int err_num;
+	void (*f)(char *opcode);
+} error_selector;
+
 extern global_t g_data;
 
 /* macros used for error messages */
@@ -68,13 +82,14 @@ extern global_t g_data;
 #define PUSH_FAIL "L%u: usage: push integer\n"
 #define PINT_FAIL "L%u: can't pint, stack empty\n"
 #define POP_FAIL "L%u: can't pop an empty stack\n"
-#define SWAP_FAIL "L%u: can't swap, stack too short\n"
+#define MOD_0 "L%u: division by zero\n"
+/* error messages to be used for swap, add, sub, div, mod and mul */
+#define OP_FAIL "L%u: can't %s, stack too short\n"
 #define ADD_FAIL "L%u: can't add, stack too short\n"
 #define SUB_FAIL "L%u: can't sub, stack too short\n"
 #define DIV_FAIL "L%u: can't div, stack too short\n"
 #define MUL_FAIL "L%u: can't mul, stack too short\n"
 #define MOD_FAIL "L%u: can't mod, stack too short\n"
-#define MOD_0 "L%u: division by zero\n"
 
 int get_monty(char **buffer, size_t *read, FILE *file);
 int tokenise(char *bufferLine);
