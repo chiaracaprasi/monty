@@ -23,7 +23,7 @@ int get_monty(char **buffer, size_t *read, FILE *file)
 }
 
 /**
- * process - breaks up the buffer into tokens and sends for processing
+ * tokenise - breaks up the buffer into tokens and sends for processing
  * @lineBuffer: a buffer containing the line from bytecode file
  * Return: 0 for success, -1 for any error
  */
@@ -67,17 +67,19 @@ int tokenise(char *lineBuffer)
 		}
 		return (0);
 	}
-	printf("calling get function here\n");
-/*	return (get_func(token));*/
-	return (0);
+	return (get_func(token));
 }
-/*
+
+/**
+ * get_func - an array of instructin_t's allowing opcode function call
+ * @opCode: a string containing the opcode to be executed
+ * Return: 0 for success, -1 for opcode not found
+ */
 int get_func(char *opCode)
 {
 	int idx = 0;
 	instruction_t selector[] = {
 		{"pall", pall_op},
-		{"pint", pint_op},
 		{NULL, NULL}
 	};
 
@@ -93,4 +95,3 @@ int get_func(char *opCode)
 	printf("printing error for bad opcode");
 	return (-1);
 }
-*/

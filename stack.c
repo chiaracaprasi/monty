@@ -1,5 +1,10 @@
 #include "monty.h"
 
+/**
+ * stack_builder - calls functions to add new node to the stack, adds int data
+ * @n: the integer to be stored in the node
+ * Return: 0 if successful, NULL if failed
+ */
 int stack_builder(int n)
 {
 	stack_t *new;
@@ -16,8 +21,11 @@ int stack_builder(int n)
 
 	return (0);
 }
-
-stack_t *push_node()
+/**
+ * push_node - adds node to start of stack_t doubly linked list (circular)
+ * Return: a pointer to the new node or NULL if failed
+ */
+stack_t *push_node(void)
 {
 	stack_t **head = access.head;
 	stack_t *new;
@@ -51,7 +59,12 @@ stack_t *push_node()
 	return (new);
 }
 
-stack_t *enqueue_node()
+/**
+ * enqueue_node - adds node to the end of a stack_t doubly
+ * linked list (circular)
+ * Return: a pointer to the new node or NULL if failed
+ */
+stack_t *enqueue_node(void)
 {
 	stack_t **head = access.head;
 	stack_t *new;
@@ -85,12 +98,21 @@ stack_t *enqueue_node()
 	return (new);
 }
 
-void delete_node()
+/**
+ * delete_node - deletes a node from the start of a stack_t doubly linked
+ * list (circular)
+ * Return: Nothing
+ */
+void delete_node(void)
 {
 	return;
 }
 
-void free_stack()
+/**
+ * free_stack - frees a stack_t doubly linked list
+ * Return: Nothing
+ */
+void free_stack(void)
 {
 	stack_t *head = *(access.head);
 

@@ -23,7 +23,6 @@ int main(int argc, char *argv[])
 	}
 
 	montyFile = fopen(argv[1], "r");
-
 	if (montyFile == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
@@ -47,7 +46,6 @@ int main(int argc, char *argv[])
 			break;
 		read = get_monty(&montyLine, &len, montyFile);
 	}
-
 	fclose(montyFile);
 	free(montyLine);
 	free_stack();

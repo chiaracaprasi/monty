@@ -7,11 +7,13 @@
 #include <unistd.h>
 
 /**
- * global_s - collection of globally needed variables
+ * struct global_s - collection of globally needed variables
  * @head: a pointer to the head of the stack
- * @pushArg: int to be pushed onto the stack;
  * @lineNum: line number from bytecode file;
- * @fifo: indicates stack or queue mode, 1 for stack or 0 for queue
+ * @mode: indicates stack or queue mode, 1 for stack or 0 for queue
+ *
+ * Description: pointer to stack and line number of file at FILE *
+ * globally available
  */
 typedef struct global_s
 {
@@ -31,9 +33,9 @@ typedef struct global_s
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 typedef stack_t dlistint_t;
@@ -48,8 +50,8 @@ typedef stack_t dlistint_t;
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 extern global_t access;
@@ -74,10 +76,10 @@ int get_monty(char **buffer, size_t *read, FILE *file);
 int tokenise(char *bufferLine);
 int stack_builder(int n);
 int get_func(char *opCode);
-stack_t *push_node();
-stack_t *enqueue_node();
-void delete_node();
-void free_stack();
+stack_t *push_node(void);
+stack_t *enqueue_node(void);
+void delete_node(void);
+void free_stack(void);
 void pall_op(stack_t **stack, unsigned int line_number);
 void pint_op(stack_t **stack, unsigned int line_number);
 void pop_op(stack_t **stack, unsigned int line_number);
