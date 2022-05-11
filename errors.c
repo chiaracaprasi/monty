@@ -61,6 +61,63 @@ int malloc_error(__attribute__ ((unused)) char *opcode)
 	exit(EXIT_FAILURE);
 }
 
+/**
+ * push_error - prints push error error message
+ *
+ * Return: EXIT_FAILURE
+ */
+int push_error(__attribute__ ((unused)) char *opcode)
+{
+	dprintf(STDERR_FILENO, PUSH_FAIL, line_number);
+	free_stack();
+	free(g_data.(*buffer));   /* not 100% on that syntax */
+	fclose(g_data.montyFile);
+	exit(EXIT_FAILURE);
+}
+
+
+/**
+ * pint_error - prints pint error message
+ *
+ * Return: EXIT_FAILURE
+ */
+int pint_error(__attribute__ ((unused)) char *opcode)
+{
+	dprintf(STDERR_FILENO, PINT_FAIL, line_number);
+	free_stack();
+	free(g_data.(*buffer));   /* not 100% on that syntax */
+	fclose(g_data.montyFile);
+	exit(EXIT_FAILURE);
+}
+
+
+/**
+ * push_error - prints push error error message
+ *
+ * Return: EXIT_FAILURE
+ */
+int pop_error(__attribute__ ((unused)) char *opcode)
+{
+	dprintf(STDERR_FILENO, POP_FAIL, line_number);
+	free_stack();
+	free(g_data.(*buffer));   /* not 100% on that syntax */
+	fclose(g_data.montyFile);
+	exit(EXIT_FAILURE);
+}
+
+/**
+ * mod0_error - prints error message
+ *
+ * Return: EXIT_FAILURE
+ */
+int mod0_error(__attribute__ ((unused)) char *opcode)
+{
+	dprintf(STDERR_FILENO, MOD_0, line_number);
+	free_stack();
+	free(g_data.(*buffer));   /* not 100% on that syntax */
+	fclose(g_data.montyFile);
+	exit(EXIT_FAILURE);
+}
 
 
 /**
