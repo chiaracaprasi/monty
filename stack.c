@@ -20,7 +20,7 @@ void stack_builder(int n)
 	new->n = n;
 }
 /**
- * push_node - adds node to start of stack_t doubly linked list (circular)
+ * push_node - adds node to start of stack_t doubly linked list
  * Return: a pointer to the new node or NULL if failed
  */
 stack_t *push_node(void)
@@ -41,16 +41,7 @@ stack_t *push_node(void)
 		return (new);
 	}
 
-	if ((*head)->next == NULL)
-	{
-		new->prev = *head;
-		new->next = *head;
-		(*head)->prev = new;
-		(*head) = new;
-		return (new);
-	}
-
-	new->prev = (*head)->prev;
+	new->prev = NULL;
 	new->next = *head;
 	(*head)->prev = new;
 	*head = new;
@@ -65,7 +56,7 @@ stack_t *push_node(void)
 stack_t *enqueue_node(void)
 {
 	stack_t **head = g_data.head;
-	stack_t *new;
+	stack_t *new, *hold;
 
 	new = malloc(sizeof(*new));
 
@@ -80,19 +71,15 @@ stack_t *enqueue_node(void)
 		return (new);
 	}
 
-	if ((*head)->next == NULL)
+	hold = *head;
+	while (hold->next != NULL)
 	{
-		new->prev = *head;
-		new->next = NULL;
-		(*head)->prev = new;
-		(*head)->next = new;
-		return (new);
+		hold = hold->next;
 	}
 
-	new->prev = (*head)->prev;
+	hold->next = new;
+	new->prev = hold;
 	new->next = NULL;
-	new->prev->next = new;
-	(*head)->prev = new;
 	return (new);
 }
 

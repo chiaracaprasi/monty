@@ -8,19 +8,17 @@
  */
 void pop_op(stack_t **stack, __attribute__ ((unused)) unsigned int line_number)
 {
-	stack_t *hold;
-
 	if (*stack == NULL)
 		error_handler(6, NULL);
 
 	if ((*stack)->next == NULL)
 	{
-		free(*stack);
+		free((*stack));
 		*stack = NULL;
+		return;
 	}
 
 	*stack = (*stack)->next;
-	hold = (*stack)->prev;
-	(*stack)->prev = hold->prev;
-	free(hold);
+	free((*stack)->prev);
+	(*stack)->prev = NULL;
 }
