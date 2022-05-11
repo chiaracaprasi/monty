@@ -52,6 +52,7 @@ typedef struct instruction_s
 extern global_t access;
 
 
+int get_monty(char **buffer, size_t *read, FILE *file);
 int tokenise(char *bufferLine);
 int stack_builder(int n);
 int get_func(char *opCode);
