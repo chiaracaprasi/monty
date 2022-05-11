@@ -1,12 +1,5 @@
 #include "monty.h"
 
-/* struct to be moved to header file */
-typedef struct error_selector
-{
-	int err_num;
-	void (*f)(char *opcode);
-} error_selector;
-
 /**
  * error_handler - reads a line from a given file stream
  * @error_code: error code given as argument
@@ -37,6 +30,7 @@ void error_handler(int error_code, char *opcode)
 
 /**
  * usage_error - prints usage error message
+ * @opcode: opcode passed as argument
  *
  * Return: EXIT_FAILURE
  */
@@ -49,6 +43,7 @@ int usage_error( __attribute__ ((unused)) char *opcode)
 
 /**
  * malloc_error - prints malloc error message
+ * @opcode: opcode passed as argument
  *
  * Return: EXIT_FAILURE
  */
@@ -63,6 +58,7 @@ int malloc_error(__attribute__ ((unused)) char *opcode)
 
 /**
  * push_error - prints push error error message
+ * @opcode: opcode passed as argument
  *
  * Return: EXIT_FAILURE
  */
@@ -78,6 +74,7 @@ int push_error(__attribute__ ((unused)) char *opcode)
 
 /**
  * pint_error - prints pint error message
+ * @opcode: opcode passed as argument
  *
  * Return: EXIT_FAILURE
  */
@@ -93,6 +90,7 @@ int pint_error(__attribute__ ((unused)) char *opcode)
 
 /**
  * push_error - prints push error error message
+ * @opcode: opcode passed as argument
  *
  * Return: EXIT_FAILURE
  */
@@ -107,6 +105,7 @@ int pop_error(__attribute__ ((unused)) char *opcode)
 
 /**
  * mod0_error - prints error message
+ * @opcode: opcode passed as argument
  *
  * Return: EXIT_FAILURE
  */
@@ -119,7 +118,7 @@ int mod0_error(__attribute__ ((unused)) char *opcode)
 	exit(EXIT_FAILURE);
 }
 
-
+/*
 /**
  * unknown_op_error - prints unknown operation error message
  *
