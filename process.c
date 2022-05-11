@@ -81,6 +81,7 @@ void get_func(char *opCode)
 		{"pint", pint_op},
 		{"pall", pall_op},
 		{"pop", pop_op},
+		{"add", add_op},
 		{NULL, NULL}
 	};
 
