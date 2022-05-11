@@ -1,6 +1,32 @@
 #include "monty.h"
 
 /**
+ * get_monty - reads a line from a given file stream
+ * @buffer: the buffer in  which to store the line
+ * @read: a ptr to int to be updated with # of bytes read
+ * @file: the file to be read
+ * Return: -1 if read failed or EOF reached, 0 otherwise
+ */
+int get_monty(char **buffer, size_t *read, FILE *file)
+{
+	int read_check;
+	char *changeBuff;
+
+	printf("arrived in getline func\n");
+	read_check = getline(buffer, read, file);
+	printf("read_check is: %d\n", read_check);
+	if (read_check == -1)
+		return (-1);
+	changeBuff = *buffer;
+	printf("The buffer string is: %s", changeBuff);
+	printf("The char to be checked is: %c\n", changeBuff[*read - 1]);
+	if (changeBuff[*read - 1] == '\n')
+		changeBuff[*read - 1] = '\0';
+
+	return (0);
+}
+
+/**
  * process - breaks up the buffer into tokens and sends for processing
  * @lineBuffer: a buffer containing the line from bytecode file
  * Return: 0 for success, -1 for any error
@@ -75,87 +101,3 @@ int get_func(char *opCode)
 	return (-1);
 }
 */
-int stack_builder(int n)
-{
-	stack_t *new;
-
-	if (access.mode == 0)
-		new = push_node();
-	else
-		new = enqueue_node();
-
-	if (new == NULL)
-		return (-1);
-
-	new->n = n;
-
-	return (0);
-}
-
-stack_t *push_node()
-{
-	stack_t **head = access.head;
-	stack_t *new;
-
-	new = malloc(sizeof(*new));
-
-	if (new == NULL)
-		return (NULL);
-
-	if (*head == NULL)
-	{
-		new->prev = NULL;
-		new->next = NULL;
-		*head = new;
-		return (new);
-	}
-
-	if ((*head)->next == NULL)
-	{
-		new->prev = *head;
-		new->next = *head;
-		(*head)->prev = new;
-		(*head) = new;
-		return (new);
-	}
-
-	new->prev = (*head)->prev;
-	new->next = *head;
-	(*head)->prev = new;
-	*head = new;
-	return (new);
-}
-
-stack_t *enqueue_node()
-{
-	stack_t **head = access.head;
-	stack_t *new;
-
-	new = malloc(sizeof(*new));
-
-	if (new == NULL)
-		return (NULL);
-
-	if (*head == NULL)
-	{
-		new->prev = NULL;
-		new->next = NULL;
-		*head = new;
-		return (new);
-	}
-
-	if ((*head)->next == NULL)
-	{
-		new->prev = *head;
-		new->next = NULL;
-		(*head)->prev = new;
-		(*head)->next = new;
-		return (new);
-	}
-
-	new->prev = (*head)->prev;
-	new->next = NULL;
-	new->prev->next = new;
-	(*head)->prev = new;
-	return (new);
-}

@@ -54,29 +54,3 @@ int main(int argc, char *argv[])
 	free_stack();
 	return (0);
 }
-
-/**
- * get_monty - reads a line from a given file stream
- * @buffer: the buffer in  which to store the line
- * @read: a ptr to int to be updated with # of bytes read
- * @file: the file to be read
- * Return: -1 if read failed or EOF reached, 0 otherwise
- */
-int get_monty(char **buffer, size_t *read, FILE *file)
-{
-	int read_check;
-	char *changeBuff;
-
-	printf("arrived in getline func\n");
-	read_check = getline(buffer, read, file);
-	printf("read_check is: %d\n", read_check);
-	if (read_check == -1)
-		return (-1);
-	changeBuff = *buffer;
-	printf("The buffer string is: %s", changeBuff);
-	printf("The char to be checked is: %c\n", changeBuff[*read - 1]);
-	if (changeBuff[*read - 1] == '\n')
-		changeBuff[*read - 1] = '\0';
-
-	return (0);
-}
