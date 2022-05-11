@@ -43,7 +43,6 @@ int main(int argc, char *argv[])
 	while (read != -1)
 	{
 		access.lineNum++;
-		printf("bytecode line says: %s", montyLine);
 		if (tokenise(montyLine) == -1)
 			break;
 		read = get_monty(&montyLine, &len, montyFile);
