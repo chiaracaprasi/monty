@@ -13,9 +13,12 @@ int get_monty(char **buffer, size_t *read, FILE *file)
 	char *changeBuff;
 
 	read_check = getline(buffer, read, file);
+
 	if (read_check == -1)
 		return (-1);
+
 	changeBuff = *buffer;
+
 	if (changeBuff[read_check - 1] == '\n')
 		changeBuff[read_check - 1] = '\0';
 
@@ -79,13 +82,14 @@ int get_func(char *opCode)
 {
 	int idx = 0;
 	instruction_t selector[] = {
+		{"pint", pint_op},
 		{"pall", pall_op},
 		{NULL, NULL}
 	};
 
 	while (selector[idx].opcode != NULL)
 	{
-		if (opCode == selector[idx].opcode)
+		if (strcmp(opCode, selector[idx].opcode) == 0)
 		{
 			selector[idx].f(g_data.head, g_data.lineNum);
 			return (0);
