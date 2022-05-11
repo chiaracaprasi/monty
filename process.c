@@ -11,25 +11,32 @@ int tokenise(char *lineBuffer)
 
 	token = strtok(lineBuffer, " ");
 
-	if (strcmp(token, "#") == 0)
+	if (*token == '#')
 	{
 		printf("found a comment\n");
 		return (0);
 	}
 
 	if (strcmp(token, "stack") == 0)
+	{
 		access.mode = 0;
-	printf("mode int is %d\n");
-
+		printf("mode int is %d\n", access.mode);
+	}
 	if (strcmp(token, "queue") == 0)
+	{
 		access.mode = 1;
-	printf("mode int is %d\n");
-
+		printf("mode int is %d\n", access.mode);
+	}
 	if (strcmp(token, "push") == 0)
 	{
 		token = strtok(NULL, " ");
 
-		if (token == NULL ||( atoi(token) == 0 && strcmp(token, "0") != 0))
+		if (token == NULL)
+		{
+			printf("print error re push arg\n");
+			return (-1);
+		}
+		if (atoi(token) == 0 && *token != '0')
 		{
 			printf("print error re push arg\n");
 			return (-1);
