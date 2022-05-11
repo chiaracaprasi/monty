@@ -99,16 +99,6 @@ stack_t *enqueue_node(void)
 }
 
 /**
- * delete_node - deletes a node from the start of a stack_t doubly linked
- * list (circular)
- * Return: Nothing
- */
-void delete_node(void)
-{
-	return;
-}
-
-/**
  * free_stack - frees a stack_t doubly linked list
  * Return: Nothing
  */
