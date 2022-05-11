@@ -1,6 +1,6 @@
 #include "monty.h"
 
-global_t g_data = {NULL, 0, 0};
+global_t g_data = {NULL, 0, 0, NULL, NULL};
 
 /**
  * main - a simple bytecode intepreter
@@ -30,6 +30,8 @@ int main(int argc, char *argv[])
 	}
 
 	g_data.head = &head;
+	g_data.montyFile = montyFile;
+	g_data.buffer = &montyLine;
 
 	if (get_monty(&montyLine, &len, montyFile) == -1)
 	{

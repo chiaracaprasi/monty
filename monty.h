@@ -11,6 +11,8 @@
  * @head: a pointer to the head of the stack
  * @lineNum: line number from bytecode file;
  * @mode: indicates stack or queue mode, 1 for stack or 0 for queue
+ * @montyFile: a pointer to the open file
+ * @buffer: a pointer to the getline buffer
  *
  * Description: pointer to stack and line number of file at FILE *
  * globally available
@@ -20,6 +22,8 @@ typedef struct global_s
 	struct stack_s **head;
 	unsigned int lineNum;
 	int mode;
+	FILE *montyFile;
+	char **buffer;
 } global_t;
 
 /**
