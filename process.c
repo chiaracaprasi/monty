@@ -37,7 +37,7 @@ void tokenise(char *lineBuffer)
 {
 	char *token;
 
-	token = strtok(lineBuffer, " ");
+	token = strtok(lineBuffer, " \t\r");
 
 	if (*token == '#' || token == NULL)
 		return;
@@ -56,7 +56,7 @@ void tokenise(char *lineBuffer)
 
 	if (strcmp(token, "push") == 0)
 	{
-		token = strtok(NULL, " ");
+		token = strtok(NULL, " \t\r");
 
 		if (token == NULL)
 			error_handler(4, NULL);
