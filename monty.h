@@ -58,6 +58,20 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ * struct error_selector - error code and its function
+ * @err_num: the error number
+ * @f: function to handle the error message
+ *
+ * Description: opcode and its function
+ * for stack, queues, LIFO, FIFO
+ */
+typedef struct error_selector
+{
+	int err_num;
+	void (*f)(char *opcode);
+} error_selector;
+
 extern global_t g_data;
 
 /* macros used for error messages */
