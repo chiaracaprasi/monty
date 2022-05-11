@@ -85,16 +85,11 @@ extern global_t g_data;
 #define MOD_0 "L%u: division by zero\n"
 /* error messages to be used for swap, add, sub, div, mod and mul */
 #define OP_FAIL "L%u: can't %s, stack too short\n"
-#define ADD_FAIL "L%u: can't add, stack too short\n"
-#define SUB_FAIL "L%u: can't sub, stack too short\n"
-#define DIV_FAIL "L%u: can't div, stack too short\n"
-#define MUL_FAIL "L%u: can't mul, stack too short\n"
-#define MOD_FAIL "L%u: can't mod, stack too short\n"
 
 int get_monty(char **buffer, size_t *read, FILE *file);
-int tokenise(char *bufferLine);
-int stack_builder(int n);
-int get_func(char *opCode);
+void tokenise(char *bufferLine);
+void stack_builder(int n);
+void get_func(char *opCode);
 stack_t *push_node(void);
 stack_t *enqueue_node(void);
 void free_stack(void);
@@ -111,5 +106,14 @@ void pchar_op(stack_t **stack, unsigned int line_number);
 void pstr_op(stack_t **stack, unsigned int line_number);
 void rotl_op(stack_t **stack, unsigned int line_number);
 void rotr_op(stack_t **stack, unsigned int line_number);
+void error_handler(int error_code, char *opcode);
+void usage_error(char *opcode);
+void malloc_error(char *opcode);
+void unknown_op(char *opcode);
+void push_op(char *opcode);
+void pint_op(char *opcode);
+void pop_op(char *opcode);
+void short_error(char *opcode);
+void mod_op(char *opcode);
 
 #endif /* _MONTY_H_ */

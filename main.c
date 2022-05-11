@@ -16,13 +16,13 @@ int main(int argc, char *argv[])
 	stack_t *head = NULL;
 
 	if (argc != 2)
-		fprintf(stderr, "USAGE: monty file");
+		error_handler(1, NULL);
 
 	montyFile = fopen(argv[1], "r");
 
 	if (montyFile == NULL)
 	{
-		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		dprintf(STDERR_FILENO, OPEN_ERR, argv[1]);
 		exit(EXIT_FAILURE);
 	}
 

@@ -3,9 +3,9 @@
 /**
  * stack_builder - calls functions to add new node to the stack, adds int data
  * @n: the integer to be stored in the node
- * Return: 0 if successful, NULL if failed
+ * Return: Nothing
  */
-int stack_builder(int n)
+void stack_builder(int n)
 {
 	stack_t *new;
 
@@ -15,11 +15,9 @@ int stack_builder(int n)
 		new = enqueue_node();
 
 	if (new == NULL)
-		return (-1);
+		error_handler(2, NULL);
 
 	new->n = n;
-
-	return (0);
 }
 /**
  * push_node - adds node to start of stack_t doubly linked list (circular)
