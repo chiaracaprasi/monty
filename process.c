@@ -14,6 +14,9 @@ int get_monty(char **buffer, size_t *read, FILE *file)
 
 	read_check = getline(buffer, read, file);
 
+	if (read_check == -1 && feof(g_data.montyFile) == 0)
+		printf("call malloc error\n");
+
 	if (read_check == -1)
 		return (-1);
 
@@ -36,7 +39,7 @@ int tokenise(char *lineBuffer)
 
 	token = strtok(lineBuffer, " ");
 
-	if (*token == '#')
+	if (*token == '#' || token == NULL)
 		return (0);
 
 	if (strcmp(token, "stack") == 0)
