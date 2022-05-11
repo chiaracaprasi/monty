@@ -42,6 +42,9 @@ void tokenise(char *lineBuffer)
 	if (*token == '#' || token == NULL)
 		return;
 
+	if (strcmp(token, "nop") == 0)
+		return;
+
 	if (strcmp(token, "stack") == 0)
 	{
 		g_data.mode = 0;
@@ -84,9 +87,6 @@ void get_func(char *opCode)
 		{"add", add_op},
 		{NULL, NULL}
 	};
-
-	if (strcmp(opCode, "nop") == 0)
-		return;
 
 	while (selector[idx].opcode != NULL)
 	{
