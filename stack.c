@@ -85,12 +85,23 @@ stack_t *enqueue_node()
 	return (new);
 }
 
-void delete_node();
+void delete_node()
 {
 	return;
 }
 
-void free_stack();
+void free_stack()
 {
-	return;
+	stack_t *head = *(access.head);
+
+	if (head == NULL)
+		return;
+
+	while (head->next != NULL)
+	{
+		head = head->next;
+		free(head->prev);
+	}
+
+	free(head);
 }
