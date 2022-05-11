@@ -38,12 +38,12 @@ int tokenise(char *lineBuffer)
 
 	if (strcmp(token, "stack") == 0)
 	{
-		access.mode = 0;
+		g_data.mode = 0;
 		return (0);
 	}
 	if (strcmp(token, "queue") == 0)
 	{
-		access.mode = 1;
+		g_data.mode = 1;
 		return (0);
 	}
 	if (strcmp(token, "push") == 0)
@@ -87,7 +87,7 @@ int get_func(char *opCode)
 	{
 		if (opCode == selector[idx].opcode)
 		{
-			selector[idx].f(access.head, access.lineNum);
+			selector[idx].f(g_data.head, g_data.lineNum);
 			return (0);
 		}
 		idx++;

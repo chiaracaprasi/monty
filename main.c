@@ -1,6 +1,6 @@
 #include "monty.h"
 
-global_t access = {NULL, 0, 0};
+global_t g_data = {NULL, 0, 0};
 
 /**
  * main - a simple bytecode intepreter
@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	access.head = &head;
+	g_data.head = &head;
 
 	if (get_monty(&montyLine, &len, montyFile) == -1)
 	{
@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 
 	while (read != -1)
 	{
-		access.lineNum++;
+		g_data.lineNum++;
 		if (tokenise(montyLine) == -1)
 			break;
 		read = get_monty(&montyLine, &len, montyFile);

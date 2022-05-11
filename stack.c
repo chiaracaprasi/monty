@@ -9,7 +9,7 @@ int stack_builder(int n)
 {
 	stack_t *new;
 
-	if (access.mode == 0)
+	if (g_data.mode == 0)
 		new = push_node();
 	else
 		new = enqueue_node();
@@ -27,7 +27,7 @@ int stack_builder(int n)
  */
 stack_t *push_node(void)
 {
-	stack_t **head = access.head;
+	stack_t **head = g_data.head;
 	stack_t *new;
 
 	new = malloc(sizeof(*new));
@@ -66,7 +66,7 @@ stack_t *push_node(void)
  */
 stack_t *enqueue_node(void)
 {
-	stack_t **head = access.head;
+	stack_t **head = g_data.head;
 	stack_t *new;
 
 	new = malloc(sizeof(*new));
@@ -114,7 +114,7 @@ void delete_node(void)
  */
 void free_stack(void)
 {
-	stack_t *head = *(access.head);
+	stack_t *head = *(g_data.head);
 
 	if (head == NULL)
 		return;

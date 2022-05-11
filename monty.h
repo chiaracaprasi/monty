@@ -54,7 +54,7 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-extern global_t access;
+extern global_t g_data;
 
 /* macros used for error messages */
 #define USAGE "USAGE: monty file\n"
