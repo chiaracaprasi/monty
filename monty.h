@@ -82,7 +82,6 @@ int stack_builder(int n);
 int get_func(char *opCode);
 stack_t *push_node(void);
 stack_t *enqueue_node(void);
-void delete_node(void);
 void free_stack(void);
 void pall_op(stack_t **stack, unsigned int line_number);
 void pint_op(stack_t **stack, unsigned int line_number);
