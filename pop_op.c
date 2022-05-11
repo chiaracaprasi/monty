@@ -13,18 +13,20 @@ void pop_op(stack_t **stack, unsigned int line_number)
 	{
 		/* call error handler */
 		printf("stack is empty, send %d\n", line_number);
-		free_node();
+		free_stack();
+		free(g_data.buffer);
+		fclose(g_data.montyFile);
 		exit(EXIT_FAILURE);
 	}
 
-	if (*stack->next == NULL)
+	if ((*stack)->next == NULL)
 	{
 		free(*stack);
-		*stack == NULL;
+		*stack = NULL;
 	}
 
-	*head = (*head)->next;
-	hold = (*head)->prev;
-	(*head)->prev = hold->prev;
+	*stack = (*stack)->next;
+	hold = (*stack)->prev;
+	(*stack)->prev = hold->prev;
 	free(hold);
 }
