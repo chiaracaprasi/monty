@@ -17,7 +17,6 @@ void pstr_op(stack_t **stack, __attribute__((unused))unsigned int line_number)
 		printf("\n");
 		return;
 	}
-	
 	while (stack && (*stack)->n != 0 && (*stack)->n >= 0 && (*stack)->n <= 127)
 	{
 		printf("%c", (*stack)->n);
