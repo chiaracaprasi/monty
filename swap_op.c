@@ -8,12 +8,25 @@
  */
 void swap_op(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 {
-	int n;
+	stack_t *hold;
 
-	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	if (*stack == NULL || (*stack)->next == NULL)
 		error_handler(7, "swap");
 
-	n = (*stack)->n;
-	(*stack)->n = ((*stack)->next)->n;
-	((*stack)->next)->n = n;
+	hold = *stack;
+	*stack = (*stack)->next;
+	(*stack)->prev = NULL;
+	hold->prev = *stack;
+
+	if ((*stack)->next == NULL)
+	{
+		hold->next = NULL;
+	}
+	else
+	{
+		hold->next = (*stack)->next;
+		(*stack)->next->prev = hold;
+	}
+
+	(*stack)->next = hold;
 }
