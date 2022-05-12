@@ -114,11 +114,13 @@ void get_func(char *opCode)
 		{"pint", pint_op},
 		{"pall", pall_op},
 		{"pop", pop_op},
+		{"swap", swap_op},
 		{"add", add_op},
 		{"sub", sub_op},
 		{"div", div_op},
 		{"mul", mul_op},
 		{"mod", mod_op},
+		{"pchar", pchar_op},
 		{NULL, NULL}
 	};
 

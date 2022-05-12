@@ -85,6 +85,8 @@ extern global_t g_data;
 #define POP_FAIL "L%u: can't pop an empty stack\n"
 #define MOD_0 "L%u: division by zero\n"
 #define OP_FAIL "L%u: can't %s, stack too short\n"
+#define PCHAR_VALUE "L%u: can't pchar, value out of range\n"
+#define PCHAR_EMPTY "L%u: can't pchar, stack empty\n"
 
 int get_monty(char **buffer, size_t *read, FILE *file);
 void tokenise(char *bufferLine);
@@ -116,5 +118,7 @@ void pint_error(char *opcode);
 void pop_error(char *opcode);
 void short_error(char *opcode);
 void mod_error(char *opcode);
+void pchar_value_error(__attribute__ ((unused)) char *opcode);
+void pchar_empty_error(__attribute__ ((unused)) char *opcode);
 
 #endif /* _MONTY_H_ */
