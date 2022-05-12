@@ -19,6 +19,8 @@ void error_handler(int error_code, char *opcode)
 		{6, pop_error},
 		{7, short_error},
 		{8, mod_error},
+		{9, pchar_value_error},
+		{10, pchar_empty_error},
 		{0, NULL}
 	};
 
