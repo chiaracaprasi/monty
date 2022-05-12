@@ -85,6 +85,10 @@ void get_func(char *opCode)
 		{"pall", pall_op},
 		{"pop", pop_op},
 		{"add", add_op},
+		{"sub", sub_op},
+		{"div", div_op},
+		{"mul", mul_op},
+		{"mod", mod_op},
 		{NULL, NULL}
 	};
 
@@ -97,5 +101,6 @@ void get_func(char *opCode)
 		}
 		idx++;
 	}
+
 	error_handler(3, opCode);
 }
