@@ -83,18 +83,7 @@ int token_check(char *token)
 		g_data.mode = 1;
 		return (0);
 	}
-/*
-	while (*token != '\0')
-	{
-		if (
-		if (isdigit(*token) == 0)
-		{
-			check = 1;
-			break;
-		}
-		token++;
-	}
-*/
+
 	return (1);
 }
 
