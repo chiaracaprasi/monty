@@ -46,10 +46,12 @@ void tokenise(char *lineBuffer)
 	{
 		token = strtok(NULL, " \t\r");
 
-		if (token == NULL)
+		if (token == NULL || token_check(token) == 1)
 			error_handler(4, NULL);
+
 		if (atoi(token) == 0 && *token != '0')
 			error_handler(4, NULL);
+
 		stack_builder(atoi(token));
 		return;
 	}
@@ -64,6 +66,8 @@ void tokenise(char *lineBuffer)
  */
 int token_check(char *token)
 {
+	int check = 0;
+
 	if (token == NULL || *token == '#')
 		return (0);
 
@@ -81,6 +85,19 @@ int token_check(char *token)
 		g_data.mode = 1;
 		return (0);
 	}
+
+	while (*token != '\0')
+	{
+		if (isdigit(*token) == 0)
+		{
+			check = 1;
+			break;
+		}
+		token++;
+	}
+
+	if (check == 0)
+		return (0);
 
 	return (1);
 }
