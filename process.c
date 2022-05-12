@@ -106,6 +106,7 @@ void get_func(char *opCode)
 		{"mul", mul_op},
 		{"mod", mod_op},
 		{"pchar", pchar_op},
+		{"pstr", pstr_op},
 		{NULL, NULL}
 	};
 
