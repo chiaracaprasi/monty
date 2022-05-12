@@ -82,6 +82,18 @@ julien@ubuntu:~/monty$
    * Doesn’t do anything
    * Usage: ``nop``
 
+* **sub, div, mul, mod** 
+   * Performs the respective mathematical operation on the first 2 elements of the stack
+   * Usage: ``<opcode>``
+
+* **pchar** 
+   * Prints the char at the top of the stack, followed by a new line
+   * Usage: ``pchar``
+
+* **pstr** 
+   * Prints the string starting at the top of the stack, followed by a new line
+   * Usage: ``pstr``
+
 
 ## 📋 Project Requirements 
 
@@ -125,7 +137,9 @@ gcc -Wall -Werror -Wextra -pedantic -std=c89 *.c -o monty
 ```
 
 
-## 🗄 Files and Descriptions
+<!--
+
+# 🗄 Files and Descriptions
 
 |  File Name |         Description         |
 |----------------|----------------------------------------------|
@@ -133,6 +147,8 @@ gcc -Wall -Werror -Wextra -pedantic -std=c89 *.c -o monty
 | `main.c` | main file  |
 | `file.c` | handles  |
 | `file.c` | handles |
+
+-->
 
 ## 🪲 Known bugs/limitations
 
