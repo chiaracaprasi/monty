@@ -83,11 +83,11 @@ extern global_t g_data;
 #define PINT_FAIL "L%u: can't pint, stack empty\n"
 #define POP_FAIL "L%u: can't pop an empty stack\n"
 #define MOD_0 "L%u: division by zero\n"
-/* error messages to be used for swap, add, sub, div, mod and mul */
 #define OP_FAIL "L%u: can't %s, stack too short\n"
 
 int get_monty(char **buffer, size_t *read, FILE *file);
 void tokenise(char *bufferLine);
+int token_check(char *token);
 void stack_builder(int n);
 void get_func(char *opCode);
 stack_t *push_node(void);

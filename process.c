@@ -39,23 +39,8 @@ void tokenise(char *lineBuffer)
 
 	token = strtok(lineBuffer, " \t\r");
 
-	if (token == NULL || *token == '#')
+	if (token_check(token) == 0)
 		return;
-
-	if (strcmp(token, "nop") == 0)
-		return;
-
-	if (strcmp(token, "stack") == 0)
-	{
-		g_data.mode = 0;
-		return;
-	}
-
-	if (strcmp(token, "queue") == 0)
-	{
-		g_data.mode = 1;
-		return;
-	}
 
 	if (strcmp(token, "push") == 0)
 	{
@@ -70,6 +55,34 @@ void tokenise(char *lineBuffer)
 	}
 
 	get_func(token);
+}
+
+/**
+ * token_check - checks the string at token for a range of values
+ * @token: the string to be checked
+ * Return: 0 if match found, 1 if not
+ */
+int token_check(char *token)
+{
+	if (token == NULL || *token == '#')
+		return (0);
+
+	if (strcmp(token, "nop") == 0)
+		return (0);
+
+	if (strcmp(token, "stack") == 0)
+	{
+		g_data.mode = 0;
+		return (0);
+	}
+
+	if (strcmp(token, "queue") == 0)
+	{
+		g_data.mode = 1;
+		return (0);
+	}
+
+	return (1);
 }
 
 /**
