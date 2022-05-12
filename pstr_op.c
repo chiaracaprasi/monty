@@ -9,9 +9,6 @@
 
 void pstr_op(stack_t **stack, __attribute__((unused))unsigned int line_number)
 {
-
-	int node = 0;
-
 	if (*stack == NULL || stack == NULL)
 	{
 		printf("\n");
@@ -21,7 +18,6 @@ void pstr_op(stack_t **stack, __attribute__((unused))unsigned int line_number)
 	{
 		printf("%c", (*stack)->n);
 		(*stack) = (*stack)->next;
-		node++;
 	}
 	printf("\n");
 
