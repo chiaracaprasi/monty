@@ -9,15 +9,17 @@
 
 void pstr_op(stack_t **stack, __attribute__((unused))unsigned int line_number)
 {
+	stack_t *node = *stack;
+
 	if (*stack == NULL || stack == NULL)
 	{
 		printf("\n");
 		return;
 	}
-	while (stack && (*stack)->n != 0 && (*stack)->n >= 0 && (*stack)->n <= 127)
+	while (node && node->n != 0 && node->n >= 0 && node->n <= 127)
 	{
-		printf("%c", (*stack)->n);
-		(*stack) = (*stack)->next;
+		printf("%c", node->n);
+		node = node->next;
 	}
 	printf("\n");
 
