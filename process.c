@@ -50,7 +50,10 @@ void tokenise(char *lineBuffer)
 			error_handler(4, NULL);
 
 		if (atoi(token) == 0 && *token != '0')
-			error_handler(4, NULL);
+		{
+			if (strcmp(token, "-0") != 0)
+				error_handler(4, NULL);
+		}
 
 		stack_builder(atoi(token));
 		return;
