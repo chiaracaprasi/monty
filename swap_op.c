@@ -6,11 +6,11 @@
  * @line_number: file line number opcode received from
  * Return: Nothing
  */
-void swap_op(stack_t **stack,__attribute__((unused)) unsigned int line_number)
+void swap_op(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 {
 	int n;
 
-	if (*stack == NULL || (*stack)->next == NULL)
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 		error_handler(7, "swap");
 
 	n = (*stack)->n;
