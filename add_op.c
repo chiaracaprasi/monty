@@ -48,11 +48,11 @@ void div_op(stack_t **stack, unsigned int line_number)
 {
 	int n;
 
-	if ((*stack)->n == 0)
-		error_handler(8, NULL);
-
 	if (*stack == NULL || (*stack)->next == NULL)
 		error_handler(7, "div");
+
+	if ((*stack)->n == 0)
+		error_handler(8, NULL);
 
 	n = (*stack)->next->n / (*stack)->n;
 	pop_op(stack, line_number);
@@ -70,11 +70,11 @@ void mod_op(stack_t **stack, unsigned int line_number)
 {
 	int n;
 
-	if ((*stack)->n == 0)
-		error_handler(8, NULL);
-
 	if (*stack == NULL || (*stack)->next == NULL)
 		error_handler(7, "mod");
+
+	if ((*stack)->n == 0)
+		error_handler(8, NULL);
 
 	n = (*stack)->next->n % (*stack)->n;
 	pop_op(stack, line_number);
